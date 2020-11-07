@@ -6,13 +6,13 @@ const answerButtonsElement = document.getElementById('answer-buttons')
 
 let shuffledQuestions, currentQuestionIndex
 
-
+// event listener for start game button and next buttons to start game and set the next question
 startButton.addEventListener('click', startGame)
 nextButton.addEventListener('click', () => {
-    currentQuestionIndex++
-    setNextQuestion()
-})
-
+        currentQuestionIndex++
+        setNextQuestion()
+    })
+    // start game function hides start button and shuffles question array and sets first question
 function startGame() {
     console.log('started')
     startButton.classList.add('hide')
@@ -22,12 +22,13 @@ function startGame() {
     setNextQuestion()
 }
 
-
+// next question function resets state of next button and selects random question from array
 function setNextQuestion() {
     resetState()
     showQuestion(shuffledQuestions[currentQuestionIndex])
 }
 
+// 
 function showQuestion(question) {
     questionElement.innerText = question.question
     question.answers.forEach(answer => {
@@ -62,8 +63,11 @@ function selectAnswer(e) {
     } else {
         startButton.innerText = 'restart'
         startButton.classList.remove('hide')
+        getScore()
     }
 }
+
+function getScore()
 
 function setStatusClass(element, correct) {
     clearStatusClass(element)
@@ -81,66 +85,82 @@ function clearStatusClass(element) {
 }
 
 const questions = [{
-        question: 'What is 2 + 2?',
+        question: 'Which of the following is not JavaScript Data Types?',
         answers: [{
-                text: '4',
+                text: 'Float',
                 correct: true
             },
             {
-                text: '22',
+                text: 'Undefined',
+                correct: false
+            },
+            {
+                text: 'Number',
+                correct: false
+            },
+            {
+                text: 'Boolean',
                 correct: false
             }
         ]
     },
     {
-        question: 'Who is the best YouTuber?',
+        question: 'Which company developed JavaScript?',
         answers: [{
-                text: 'Web Dev Simplified',
+                text: 'Netscape',
                 correct: true
             },
             {
-                text: 'Traversy Media',
-                correct: true
-            },
-            {
-                text: 'Dev Ed',
-                correct: true
-            },
-            {
-                text: 'Fun Fun Function',
-                correct: true
-            }
-        ]
-    },
-    {
-        question: 'Is web development fun?',
-        answers: [{
-                text: 'Kinda',
+                text: 'Bell Labs',
                 correct: false
             },
             {
-                text: 'YES!!!',
-                correct: true
-            },
-            {
-                text: 'Um no',
+                text: 'Sun Microsystems',
                 correct: false
             },
             {
-                text: 'IDK',
+                text: 'IBM',
                 correct: false
             }
         ]
     },
     {
-        question: 'What is 4 * 2?',
+        question: 'Inside which HTML element do we put the JavaScript?',
         answers: [{
-                text: '6',
+                text: '<head>',
                 correct: false
             },
             {
-                text: '8',
+                text: '<script>',
                 correct: true
+            },
+            {
+                text: '<meta>',
+                correct: false
+            },
+            {
+                text: '<style>',
+                correct: false
+            }
+        ]
+    },
+    {
+        question: 'Which of the following is correct about features of JavaScript?',
+        answers: [{
+                text: 'It can not Handling dates and time.',
+                correct: false
+            },
+            {
+                text: 'JavaScript is a object-based scripting language.',
+                correct: true
+            },
+            {
+                text: 'JavaScript is not interpreter based scripting language.',
+                correct: false
+            },
+            {
+                text: 'All of the above',
+                correct: false
             }
         ]
     }
