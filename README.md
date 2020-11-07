@@ -1,26 +1,16 @@
-# quiz_homework
 
-const startingMinutes = 3;
+const startButton = document.getElementById("start-btn");
 
-let time = startingMinutes \* 60;
+let para = document.getElementById("clock");
+let clock = 0,
+    clear;
 
-const clockEl = document.getElementById("clock");
+document.getElementById("start-btn").addEventListener("click", () => {
+    setInterval(valueCount, 1000);
+});
 
-function startTimer() {
-
-    setInterval(startTimer, 1000);
-    const minutes = Math.floor(time / 60);
-    let seconds = minutes % 60;
-
-    seconds = seconds < 10 ? "0" + seconds : seconds
-
-
-    clockEl.innerHTML = `${minutes}: ${seconds}` ;
-
-    time--;
-
-    console.log("Timer started")
-
+function valueCount() {
+    clock++;
+    para.innerText = clock;
+    setNextQuestion();
 }
-
-document.getElementById("start-btn").addEventListener("click", startTimer);
