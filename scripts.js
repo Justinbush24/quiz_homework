@@ -63,11 +63,11 @@ function selectAnswer(e) {
     } else {
         startButton.innerText = 'restart'
         startButton.classList.remove('hide')
-        getScore()
+
     }
 }
 
-function getScore()
+
 
 function setStatusClass(element, correct) {
     clearStatusClass(element)
